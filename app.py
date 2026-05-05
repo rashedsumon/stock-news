@@ -11,13 +11,12 @@ st.title("📈 Stock Market Prediction from News")
 model, vectorizer = load_model()
 
 if model is None:
-    st.info("Training model... (first run only)")
+    st.warning("Model not found or corrupted. Training new model...")
+
     df = load_data()
     model, vectorizer = train_model(df)
-    st.success("Model trained successfully!")
 
-# User input
-st.subheader("Enter News Headlines")
+    st.success("Model trained successfully!")
 
 user_input = st.text_area(
     "Paste multiple news headlines (similar to Top1–Top25):"
